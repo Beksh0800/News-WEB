@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+<section class="block">
+    <h1 class="title">Последние новости</h1>
+    <div class="breadcrumbs">
+        <ul>
+            <li>
+                <a href="#">
+                   <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                    -->Главная
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        {% for news in posts %}
+        <div class="card card-side bg-base-100 shadow-xl">
+            <img src="{{ news.image }}" alt="Movie"/>
+            <div class="card-body">
+                <h2 class="card-title">{{ news.title }}</h2>
+                <p >{{ news.description|truncatewords:15 }}</p>
+                <div class="card-actions">
+                    <a class="btn btn-primary" href="{% url 'news_detail_page' pk=news.pk %}">Читать подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="card-actions">
+        <a class="btn btn-primary btn-all-news" href="{% url 'all_news_page' %}">Все новости</a>
+    </div>
+</section>
+
+{% endblock %}

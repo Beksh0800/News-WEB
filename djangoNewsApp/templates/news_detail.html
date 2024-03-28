@@ -1,0 +1,49 @@
+{% extends './base.html' %}
+
+{% block title %} {{post.title}} {% endblock %}
+
+{% block content %}
+
+    <section class="block">
+        <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page' %}">
+                                <!--<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                                -->Главная
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'all_news_page' %}">
+                                <!--<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                                -->Все новости
+                            </a>
+                        </li>
+                        <li>
+                            <a href="# ">
+                                <!--<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                                -->{{ post.title}}
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            <h1 class="title">{{ post.title }}</h1>
+
+            <div class="container">
+        <div class="card card-side bg-base-100 shadow-xl">
+            <img src="{{ post.image }}" alt="Movie"/>
+            <div class="card-body">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <p >{{ post.description }}</p>
+
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+{% endblock %}
+
+
+

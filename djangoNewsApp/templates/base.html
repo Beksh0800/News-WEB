@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
+          rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+</head>
+<body>
+<div class="navbar bg-base-100">
+    <div class="navbar-start">
+        <a class="btn btn-ghost text-xl">NEWS</a>
+    </div>
+    <div class="navbar-end flex-none">
+        <ul class="menu menu-horizontal px-1">
+            <li><a href="{% url 'home_page' %}">Главная</a></li>
+            <li><a href="{% url 'all_news_page' %}">Новости</a></li>
+            <li>
+                  {% if user.is_authenticated %}
+                <details>
+                  <summary> {{ user }}</summary>
+                  <ul class="p-2 menu-vertical">
+                      {% if user.is_superuser %}
+                    <li><a href="{% url 'admin:index' %}">Админ панель</a></li>
+                      
+                        {% endif %}
+                    <li><a href="{% url 'logout_request' %}">Выход</a></li>
+                  </ul>
+                </details>
+                  {% else %}
+                <li>
+                    <a  class="btn btn-primary "  href="{% url 'signup_page' %}">Регистрация</a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="{% url 'login_page' %}">Вход</a>
+                </li>
+                      
+                {% endif %}
+        
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>
